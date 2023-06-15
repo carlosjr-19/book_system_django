@@ -1,0 +1,74 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,600;1,500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+    
+    form{
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .formu{
+        padding: 10px;
+        font-family: 'Crimson Text', serif;
+    }
+    input{
+        border-radius: 20px;
+        padding: 2px;
+        padding-left: 6;
+        margin-left: 4px;
+        height: 20px;
+
+    }
+    .botonAgg{
+        width: 150px;
+        height: 30px;
+        font-size: 14px;
+        font-family: Mulish;
+        background-color: rgba(44, 146, 6, 0.863);
+        cursor: pointer;
+        color: white;
+        transition: all 200ms;
+        text-decoration: none;
+        padding: 4px 8px 4px 8px;
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    .botonAgg:hover{
+        box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    }
+
+    input [type="file"]{
+        width: 186px;
+    }
+</style>
+
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    {% for campo in formulario %}
+    <div class="formu">
+        <label>{{ campo.label }}:</label>
+
+        {% if campo.field.widget.input_type == 'file' and campo.value %}
+        <br>
+        <img src="{{ MEDIA_URL }}/imagenes/{{ campo.value }}" alt="" width="100">
+        {%  endif%}
+        <input 
+        type="{{ campo.field.widget.input_type }}" 
+        name="{{ campo.name }}" 
+        class="" 
+        placeholder="{{ campo.label }}"
+        value="{{ campo.value | default:'' }}" 
+        style="padding-left: 8px; width: 200px;"
+        />
+    </div>
+    <div class="error">
+        {{ campo.error }}
+    </div>
+    {% endfor %}
+
+    <input class="botonAgg" type="submit" value="Enviar información">
+
+</form>

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block titulo %} Agregar nuevo libro {% endblock %}
+
+{% block contenido %} 
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,600;1,500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+    .tarjeta{
+        font-family: 'Mulish';
+        /*overflow-x: auto;*/
+        width: 80%;
+        background-color: rgb(211, 211, 208);
+        border-radius: 8px;
+        margin: auto;
+        padding: 10px;
+    }
+    .tarjeta-header{
+        width: 100%;
+        font-family: 'Crimson Text', serif;
+        font-size: 40px;
+        margin: 5px;
+        text-align: center;
+    }
+    .tarjeta-title{
+        font-weight: 900;
+        font-size: 26px;
+        margin: 5px;
+    }
+</style>
+
+<div class="tarjeta">
+    <div class="tarjeta-header">
+        Crear un libro
+    </div>
+    <div class="tarjeta-body">
+        <h4>Datos del libro</h4>
+        {% include 'libros/form.html'%}
+    </div>
+</div>
+
+{% endblock %}

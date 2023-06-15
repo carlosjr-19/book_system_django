@@ -1,0 +1,35 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet"  href="{% static 'css/estilos.css' %}">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/saturn.ico' %}">
+        <title>{% block titulo %} {% endblock %}</title>
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <div class="nav">
+                <a class="" href="{% url 'inicio' %}">Inicio</a>
+                <a class="" href="{% url 'libros' %}">Libros</a>
+                <a class="" href="{% url 'nosotros' %}">Nosotros</a>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="">
+                    {% block contenido %} {% endblock %}
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            Master en python &copy; Carlos Villarroel
+        </footer>
+        <!-- Bootstrap JavaScript Libraries -->
+    </body>
+</html>
